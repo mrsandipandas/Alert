@@ -1,0 +1,3 @@
+http://msdn.microsoft.com/en-us/magazine/dd898316.aspx
+
+http://jqueryui.com/demos/dialog/#modal-confirmation|default

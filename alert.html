@@ -1,0 +1,57 @@
+<HTML>
+<head><title>Notification</title></head>
+<body>
+<script type="text/javascript" src="generic.js"></script>
+<script> 
+//==================================================================================================
+function format_alertBox(){
+	try{
+		var myarray = window.dialogArguments;
+		var btn_style 		= myarray[0];
+		var header_style 	= myarray[1];
+		var msg_style 		= myarray[2];
+		var ok_style 		= myarray[3];
+		var header_bg_color = myarray[4];
+		var msg 			= myarray[5];
+		var header 			= myarray[6];		
+		var winHeight = parseInt(window_height())-4;
+		var str = "";	
+		str = str + "<html>";
+		str = str + "<head><head><title>Notification</title></head>";
+		str = str + "<body onKeyDown='window.close()'>";	
+		str = str + "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tr><td bgcolor='#333333'>";
+			str = str + "<table width='100%' height='"+winHeight+"' border='0' cellspacing='1' cellpadding='1'>";
+			//start header row
+			str = str + "<tr><td id='handle' bgcolor='"+header_bg_color+"' style='"+header_style+"' align='center' valign='middle' height='20'>";
+			str = str + header;//alert header
+			str = str + "</td></tr>";
+			//end header row
+			//start middle row				
+			str = str + "<tr><td bgcolor='#FFFFFF' align='center' valign='middle' style='"+msg_style+"'>";
+			str = str + msg;//alert msg
+			str = str + "</td></tr>";		
+			//end middle row
+			//start footer row
+			str = str + "<tr><td bgcolor='#E6E2E2' align='center' valign='middle' height='30' >";			
+			str = str + "<input type='button' name='Button' value=' OK ' id='buttonOKbutton' style='"+ok_style+"' onclick='window.close()'>";
+			str = str + "</td></tr>";
+			//end footer row
+			str = str + "</table>";
+		str = str + "</td></tr></table>";	
+		str = str + "</body></html>";
+		document.write(str);
+	}catch(e){
+		var myarray = window.dialogArguments;	
+		var msg = myarray[5];		
+		alert(msg);
+		window.close();
+	}
+}
+//==================================================================================================
+var myInterval_child = window.setInterval(function (){	
+	format_alertBox();															
+},140);	
+window.setTimeout(function () {clearInterval(myInterval_child);},150);
+</script>
+</body>
+</HTML>
